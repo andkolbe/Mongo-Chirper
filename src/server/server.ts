@@ -14,7 +14,7 @@ app.use(express.static('public'));
 app.use(express.json()); // allows our server to accept JSON inside of a request body
 app.use('/api', apiRouter);
 
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, '../public/index.html'))); 
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, '../public/index.html')));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server listening on port: ${port}`));

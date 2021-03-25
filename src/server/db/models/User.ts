@@ -23,7 +23,9 @@ const UserSchema = new mongoose.Schema({
 })
 
 // create the model and export it 
+
 // the first argument is the name of the model
 // mongoose will look at this name, pluralize it, and look for that collection inside the database whenever we use this model in the future to communicate with the database
+
 // the second argument is the schema we want to base this model on
 export default mongoose.model('User', UserSchema);
