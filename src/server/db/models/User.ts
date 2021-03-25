@@ -15,12 +15,8 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
     }
-})
+}, { timestamps: true }); // createdAt
 
 // create the model and export it 
 

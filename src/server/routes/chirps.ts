@@ -3,40 +3,60 @@ import Chirp from '../db/models/Chirps';
 
 const router = Router();
 
-// mongoose and mongo sandbox routes
-router.get('/add-chirp', (req, res) => {
-    const chirp = new Chirp({
-        content: 'new chirp 2',
-        location: 'Birmingham'
-    });
+// mongoose has built in methods. find, create, remove
 
-    chirp.save()
-        .then((result) => {
-            res.send(result)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+router.get('/', async (req, res) => {
+    try {
+        const chirps = await Chirp.find() // use find() to get all chirps
+        res.json(chirps);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: 'WHYYYYYYY', error: error.message });
+    }
 })
 
-router.get('/all-chirps', (req, res) => {
-    Chirp.find()
-        .then((result) => {
-            res.send(result)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+router.get('/:id', async (req, res) => {
+    try {
+        const chirp = await Chirp.findOne({ _id: req.params.id }) // use findOne() to get one chirp
+        res.json(chirp);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: 'WHYYYYYYY', error: error.message });
+    }
 })
 
-router.get('/single-chirp', (req, res) => {
-    Chirp.findById('605cc3c4ff60c23630d86109')
-        .then((result) => {
-            res.send(result)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+router.post('/', async (req, res) => {
+    try {
+        const chirpDTO = req.body;
+        const result = await Chirp.create(chirpDTO)
+        res.json({ result, msg: 'chirp created!' });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: 'WHYYYYYYY', error: error.message });
+    }
 })
+
+router.put('/:id', async (req, res) => {
+    try {
+        const editedChirp = req.body;
+        const result = await Chirp.findOneAndUpdate({ _id: req.params.id }, editedChirp);
+        res.json({ result, msg: 'chirp updated!' });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: 'FFFFFFFFFF', error: error.message })
+    }
+})
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const result = await Chirp.remove({ _id: req.params.id })
+        res.json({ result, msg: 'chirp deleted!' });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: 'this sucks', error: error.message })
+    }
+})
+
+
 
 export default router;
