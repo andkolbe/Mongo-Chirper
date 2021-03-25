@@ -1,5 +1,4 @@
 import * as express from 'express';
-//@ts-ignore
 import * as morgan from 'morgan';
 import * as path from 'path';
 import routes from './routes';
