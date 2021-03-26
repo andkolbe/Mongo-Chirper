@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import chirpsRouter from './chirps';
+import apiRouter from './api';
+import authRouter from './auth';
 
 const router = Router();
 
-router.use('/chirps', chirpsRouter); // /api/chirps/
+router.use('/api', apiRouter); 
+router.use('/auth', authRouter); 
 
 export default router;

@@ -12,10 +12,10 @@ const ChirpSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // user: {
-    //     type: mongoose.Schema.Types.ObjectId, // the id on the user
-    //     ref: 'User'
-    // }
+    user: {
+        type: mongoose.Schema.Types.ObjectId, // the id on the user
+        ref: 'User'
+    }
 }, { timestamps: true }); // createdAt
 
 // create the model and export it 

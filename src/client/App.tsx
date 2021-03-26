@@ -5,6 +5,7 @@ import Home from './views/Home';
 import NewChirp from './views/NewChirp';
 import Admin from './views/Admin';
 import NotFound from './views/NotFound';
+import Login from './views/Login';
 
 
 
@@ -22,6 +23,9 @@ const App: React.FC<AppProps> = (props, state) => {
 				</Route>
 				<Route exact path='/chirps/:id/admin'>
 					<Admin />
+				</Route>
+				<Route exact path='/login'>
+					<Login />
 				</Route>
 				<Route exact path='*'> 
 					<NotFound />

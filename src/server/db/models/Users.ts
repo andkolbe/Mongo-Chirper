@@ -4,18 +4,26 @@ import * as mongoose from 'mongoose';
 // a model wraps around a schema and provides us an interface by which we can communicate with a database collection for that document type
 
 const UserSchema = new mongoose.Schema({
-    name: {
+    // all of these fields come back from google
+    googleId: {
         type: String,
-        required: true
-    },
-    email: {
+        required: true,
+      },
+      displayName: {
         type: String,
-        required: true
-    },
-    password: {
+        required: true,
+      },
+      firstName: {
         type: String,
-        required: true
-    }
+        required: true,
+      },
+      lastName: {
+        type: String,
+        required: true,
+      },
+      image: {
+        type: String,
+      },
 }, { timestamps: true }); // createdAt
 
 // create the model and export it 

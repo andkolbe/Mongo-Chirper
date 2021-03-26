@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import Chirp from '../db/models/Chirps';
+import Chirp from '../../db/models/Chirps';
 
 const router = Router();
 

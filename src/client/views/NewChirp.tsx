@@ -8,7 +8,7 @@ const NewChirp: React.FC<NewChirpProps> = props => {
     // function based components are NOT coded to automatically give you props. You have to include it in the function argument
     const history = useHistory();
 
-    const [userid, setUserid] = useState<string>(''); // even though the userid is a number, inputs are always strings
+    // const [userid, setUserid] = useState<string>(''); // even though the userid is a number, inputs are always strings
     const [content, setContent] = useState<string>('');
     const [location, setLocation] = useState<string>('');
     const [error, setError] = useState(null);
@@ -19,7 +19,7 @@ const NewChirp: React.FC<NewChirpProps> = props => {
 
     useEffect(() => {
         setError(null);
-    }, [userid, content, location])
+    }, [content, location])
 
 
     const addChirp = async (e: React.MouseEvent<HTMLButtonElement>) => { // e means event
@@ -39,8 +39,8 @@ const NewChirp: React.FC<NewChirpProps> = props => {
     return ( // return is always written after the methods
         <Layout>
             <form className="form-group border p-4 shadow bg-white">
-                <label htmlFor="name" className="font-weight-bold">Userid</label>
-                <input value={userid} onChange={e => setUserid(e.target.value)} id="name" type="text" className="form-control bg-warning" />
+                {/* <label htmlFor="name" className="font-weight-bold">Userid</label> */}
+                {/* <input value={userid} onChange={e => setUserid(e.target.value)} id="name" type="text" className="form-control bg-warning" /> */}
                 <label htmlFor="message" className="mt-4 font-weight-bold">Content</label>
                 <textarea value={content} onChange={e => setContent(e.target.value)} rows={6} id="message" className="form-control my-1 bg-warning" />
                 <label htmlFor="name" className="font-weight-bold">Location</label>
